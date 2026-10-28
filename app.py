@@ -39,37 +39,44 @@ st.set_page_config(
 st.markdown(
     """
     <style>
-    /* CSS Custom Properties - Design System */
+    /* CSS Custom Properties - Design System (Maroon & Cream Palette) */
     :root {
-        --color-primary: #B32F4E;
-        --color-primary-hover: #982440;
-        --color-primary-light: #FBECEF;
-        --color-primary-muted: rgba(179, 47, 78, 0.12);
-        --color-accent: #F4F7CD;
-        --color-accent-border: #E5EBA6;
-        --color-accent-text: #454722;
-        --color-bg-base: #FCFCFA;
-        --color-bg-surface: #FFFFFF;
-        --color-bg-subtle: #F8F9FA;
-        --color-neutral-text: #1F2421;
-        --color-neutral-muted: #59615B;
-        --color-neutral-light: #8C948F;
-        --color-border: #E4E7E5;
-        --color-border-subtle: #EDEDED;
+        --color-primary: #B32F4E;         /* Core brand maroon */
+        --color-primary-hover: #C93B5D;   /* Lighter vibrant maroon for hover */
+        --color-primary-light: #5E1A31;   /* Muted dark maroon surface */
+        --color-primary-muted: rgba(179, 47, 78, 0.25);
+        --color-bg-base: #4A1426;         /* Deep Maroon primary page background */
+        --color-bg-surface: #32101D;      /* Dark Burgundy surface (cards, sidebar, nav) */
+        --color-bg-subtle: #3D1424;       /* Tonal dark burgundy variation */
+        --color-bg-elevated: #56182D;     /* Slightly lighter burgundy for elevated states */
+        --color-cream: #F4F1DE;           /* Primary text, headings, prominent labels */
+        --color-cream-soft: #E8E1C8;      /* Secondary text, muted foreground, subtle borders */
+        --color-cream-muted: #B8B09A;     /* Muted secondary labels and captions */
+        --color-accent: #F4F7CD;          /* Accent cream for badges, highlights */
+        --color-accent-border: #D8DC97;
+        --color-accent-text: #2D3010;
+        --color-border: #5C2236;          /* Muted burgundy border */
+        --color-border-subtle: #451928;
+        --color-border-cream: rgba(244, 241, 222, 0.2);
         --font-family: "Helvetica Now", "Helvetica Neue", Helvetica, Arial, sans-serif;
         --radius-sm: 6px;
         --radius-md: 10px;
         --radius-lg: 14px;
         --radius-pill: 9999px;
-        --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.04);
-        --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
-        --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
-        --shadow-lg: 0 10px 15px -3px rgba(179, 47, 78, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+        --shadow-xs: 0 1px 3px rgba(0, 0, 0, 0.25);
+        --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.35);
+        --shadow-md: 0 6px 14px rgba(0, 0, 0, 0.45);
+        --shadow-lg: 0 10px 24px rgba(0, 0, 0, 0.55);
         --transition-fast: 0.15s ease-in-out;
         --transition-normal: 0.25s ease-in-out;
     }
 
-    /* Global Typography & Font Family Stack */
+    /* Overall App Background & Typography */
+    .stApp {
+        background-color: var(--color-bg-base) !important;
+        color: var(--color-cream) !important;
+    }
+
     html, body, .stMarkdown, .stText, p, h1, h2, h3, h4, h5, h6,
     input, textarea, select {
         font-family: var(--font-family) !important;
@@ -92,7 +99,7 @@ st.markdown(
     h1, .stMarkdown h1, [data-testid="stHeader"] h1 {
         font-family: var(--font-family) !important;
         font-weight: 700 !important;
-        color: var(--color-primary) !important;
+        color: var(--color-cream) !important;
         letter-spacing: -0.025em;
         line-height: 1.25;
     }
@@ -100,17 +107,19 @@ st.markdown(
     h2, .stMarkdown h2 {
         font-family: var(--font-family) !important;
         font-weight: 700 !important;
-        color: var(--color-primary) !important;
+        color: var(--color-cream) !important;
         letter-spacing: -0.02em;
         margin-top: 0.5rem;
         margin-bottom: 0.5rem;
         line-height: 1.3;
+        border-bottom: 1px solid var(--color-border);
+        padding-bottom: 6px;
     }
 
     h3, .stMarkdown h3 {
         font-family: var(--font-family) !important;
         font-weight: 600 !important;
-        color: var(--color-neutral-text) !important;
+        color: var(--color-cream-soft) !important;
         letter-spacing: -0.015em;
         line-height: 1.35;
     }
@@ -118,27 +127,36 @@ st.markdown(
     h4, .stMarkdown h4 {
         font-family: var(--font-family) !important;
         font-weight: 600 !important;
-        color: var(--color-neutral-text) !important;
+        color: var(--color-cream-soft) !important;
         line-height: 1.4;
     }
 
     /* General Body Text & Links */
     p, li, .stMarkdown p {
-        color: var(--color-neutral-text);
+        color: var(--color-cream-soft);
         line-height: 1.65;
         font-size: 0.98rem;
     }
 
+    strong, b {
+        color: var(--color-cream) !important;
+    }
+
     a {
-        color: var(--color-primary);
+        color: var(--color-accent);
         text-decoration: none;
         transition: color var(--transition-fast);
         font-weight: 500;
     }
 
     a:hover {
-        color: var(--color-primary-hover);
+        color: #FFFFFF;
         text-decoration: underline;
+    }
+
+    /* Header styling */
+    header[data-testid="stHeader"] {
+        background-color: transparent !important;
     }
 
     /* Section anchor offset for comfortable scrolling */
@@ -153,7 +171,7 @@ st.markdown(
         margin: 36px 0 24px 0;
         border: 0;
         height: 1px;
-        background: linear-gradient(to right, rgba(179, 47, 78, 0.05), rgba(179, 47, 78, 0.35), rgba(179, 47, 78, 0.05));
+        background: linear-gradient(to right, rgba(244, 241, 222, 0.05), rgba(179, 47, 78, 0.6), rgba(244, 241, 222, 0.05));
     }
 
     /* Metric Card Styling */
@@ -163,24 +181,28 @@ st.markdown(
         padding: 14px 20px;
         border: 1px solid var(--color-border);
         border-left: 4px solid var(--color-primary);
-        box-shadow: var(--shadow-xs);
-        transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+        box-shadow: var(--shadow-sm);
+        transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
     }
     div[data-testid="stMetric"]:hover {
         transform: translateY(-2px);
-        box-shadow: var(--shadow-sm);
+        box-shadow: var(--shadow-md);
+        border-color: var(--color-primary);
     }
     div[data-testid="stMetric"] [data-testid="stMetricValue"] {
-        color: var(--color-primary) !important;
+        color: var(--color-cream) !important;
         font-weight: 700;
         font-size: 1.7rem;
     }
     div[data-testid="stMetric"] [data-testid="stMetricLabel"] {
-        color: var(--color-neutral-muted) !important;
+        color: var(--color-cream-muted) !important;
         font-size: 0.85rem;
         font-weight: 600;
         text-transform: uppercase;
         letter-spacing: 0.03em;
+    }
+    div[data-testid="stMetric"] [data-testid="stMetricDelta"] {
+        color: var(--color-accent) !important;
     }
 
     /* Card Container */
@@ -190,12 +212,12 @@ st.markdown(
         border-radius: var(--radius-md);
         padding: 22px;
         margin-bottom: 18px;
-        box-shadow: var(--shadow-xs);
+        box-shadow: var(--shadow-sm);
         transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
     }
     .portfolio-card:hover {
         box-shadow: var(--shadow-md);
-        border-color: rgba(179, 47, 78, 0.25);
+        border-color: var(--color-primary);
         transform: translateY(-2px);
     }
 
@@ -216,9 +238,9 @@ st.markdown(
     /* Topic Pill */
     .topic-pill {
         display: inline-block;
-        padding: 3px 10px;
+        padding: 4px 11px;
         background-color: var(--color-bg-subtle);
-        color: var(--color-neutral-muted);
+        color: var(--color-cream-soft);
         border: 1px solid var(--color-border);
         border-radius: var(--radius-pill);
         font-size: 0.75rem;
@@ -228,9 +250,9 @@ st.markdown(
         transition: all var(--transition-fast);
     }
     .topic-pill:hover {
-        background-color: var(--color-accent);
-        color: var(--color-accent-text);
-        border-color: var(--color-accent-border);
+        background-color: var(--color-primary);
+        color: #FFFFFF;
+        border-color: var(--color-primary);
     }
 
     /* Top Quick Links Bar */
@@ -244,26 +266,26 @@ st.markdown(
         flex-wrap: wrap;
         gap: 10px;
         align-items: center;
-        box-shadow: var(--shadow-xs);
+        box-shadow: var(--shadow-md);
         position: sticky;
         top: 2.875rem;
         z-index: 99;
     }
     .quick-nav-link {
-        color: var(--color-primary);
+        color: var(--color-cream) !important;
         text-decoration: none;
         font-weight: 600;
         font-size: 0.88rem;
         padding: 6px 14px;
         border-radius: var(--radius-sm);
-        background-color: var(--color-primary-light);
-        border: 1px solid rgba(179, 47, 78, 0.2);
+        background-color: var(--color-bg-subtle);
+        border: 1px solid var(--color-border);
         transition: all var(--transition-fast);
     }
     .quick-nav-link:hover {
-        background-color: var(--color-primary);
+        background-color: var(--color-primary-hover);
         color: #FFFFFF !important;
-        border-color: var(--color-primary);
+        border-color: var(--color-primary-hover);
         text-decoration: none;
         transform: translateY(-1px);
         box-shadow: var(--shadow-xs);
@@ -271,7 +293,7 @@ st.markdown(
     .quick-nav-link.active {
         background-color: var(--color-primary) !important;
         color: #FFFFFF !important;
-        border-color: var(--color-primary) !important;
+        border-color: var(--color-accent) !important;
         box-shadow: var(--shadow-sm);
     }
 
@@ -279,16 +301,16 @@ st.markdown(
     .sidebar-chapter-link {
         display: flex;
         align-items: center;
-        padding: 5px 8px;
+        padding: 6px 10px;
         border-radius: var(--radius-sm);
-        color: var(--color-primary);
+        color: var(--color-cream-soft);
         text-decoration: none;
         font-weight: 500;
         transition: all var(--transition-fast);
     }
     .sidebar-chapter-link:hover {
-        background-color: var(--color-primary-light);
-        color: var(--color-primary-hover);
+        background-color: var(--color-bg-elevated);
+        color: var(--color-cream);
         text-decoration: none;
     }
     .sidebar-chapter-link.active {
@@ -304,16 +326,20 @@ st.markdown(
         border-radius: var(--radius-sm) !important;
         transition: all var(--transition-fast) !important;
         border: 1px solid var(--color-primary) !important;
-    }
-    .stButton > button[kind="primary"], .stButton > button:focus {
         background-color: var(--color-primary) !important;
-        color: #FFFFFF !important;
-        border-color: var(--color-primary) !important;
+        color: var(--color-cream) !important;
+        box-shadow: var(--shadow-xs);
     }
-    .stButton > button:hover {
+    .stButton > button:hover, div[data-testid="stLinkButton"] > a:hover {
         border-color: var(--color-primary-hover) !important;
-        color: var(--color-primary-hover) !important;
-        background-color: var(--color-primary-light) !important;
+        color: #FFFFFF !important;
+        background-color: var(--color-primary-hover) !important;
+        box-shadow: var(--shadow-sm);
+        transform: translateY(-1px);
+    }
+    .stButton > button:focus, div[data-testid="stLinkButton"] > a:focus {
+        border-color: var(--color-accent) !important;
+        box-shadow: 0 0 0 2px rgba(244, 247, 205, 0.4) !important;
     }
 
     /* Form Submit Button */
@@ -324,40 +350,74 @@ st.markdown(
         border-radius: var(--radius-sm) !important;
         font-weight: 600 !important;
         padding: 8px 18px !important;
+        box-shadow: var(--shadow-sm);
     }
     div[data-testid="stFormSubmitButton"] > button:hover {
         background-color: var(--color-primary-hover) !important;
         border-color: var(--color-primary-hover) !important;
-        box-shadow: var(--shadow-sm) !important;
+        box-shadow: var(--shadow-md);
+        transform: translateY(-1px);
     }
 
     /* Streamlit Tabs Styling */
+    div[data-baseweb="tab-list"] {
+        border-bottom: 1px solid var(--color-border) !important;
+        background-color: transparent !important;
+    }
     button[data-baseweb="tab"] {
         font-family: var(--font-family) !important;
         font-weight: 500 !important;
-        color: var(--color-neutral-muted) !important;
+        color: var(--color-cream-muted) !important;
         padding: 10px 18px !important;
         border-bottom: 2px solid transparent !important;
+        background-color: transparent !important;
         transition: all var(--transition-fast) !important;
     }
     button[data-baseweb="tab"]:hover {
-        color: var(--color-primary) !important;
+        color: var(--color-cream) !important;
+        background-color: rgba(179, 47, 78, 0.15) !important;
     }
     button[data-baseweb="tab"][aria-selected="true"] {
-        color: var(--color-primary) !important;
+        color: var(--color-accent) !important;
         font-weight: 700 !important;
         border-bottom-color: var(--color-primary) !important;
+        background-color: rgba(179, 47, 78, 0.2) !important;
     }
 
     /* Form Controls: Inputs, Textarea, Select */
+    div[data-baseweb="input"], div[data-baseweb="textarea"], div[data-baseweb="select"] > div {
+        background-color: var(--color-bg-surface) !important;
+        border-color: var(--color-border) !important;
+        border-radius: var(--radius-sm) !important;
+    }
     div[data-baseweb="input"] input, div[data-baseweb="textarea"] textarea {
         font-family: var(--font-family) !important;
-        border-radius: var(--radius-sm) !important;
-        color: var(--color-neutral-text) !important;
+        color: var(--color-cream) !important;
+        background-color: var(--color-bg-surface) !important;
     }
-    div[data-baseweb="input"]:focus-within, div[data-baseweb="textarea"]:focus-within {
+    div[data-baseweb="input"] input::placeholder, div[data-baseweb="textarea"] textarea::placeholder {
+        color: var(--color-cream-muted) !important;
+        opacity: 0.7;
+    }
+    div[data-baseweb="input"]:focus-within, div[data-baseweb="textarea"]:focus-within, div[data-baseweb="select"] > div:focus-within {
         border-color: var(--color-primary) !important;
         box-shadow: 0 0 0 1px var(--color-primary) !important;
+    }
+    div[data-baseweb="select"] span, div[data-baseweb="select"] div {
+        color: var(--color-cream) !important;
+    }
+    /* Select dropdown popover */
+    ul[role="listbox"] {
+        background-color: var(--color-bg-surface) !important;
+        border: 1px solid var(--color-border) !important;
+    }
+    li[role="option"] {
+        color: var(--color-cream) !important;
+        background-color: var(--color-bg-surface) !important;
+    }
+    li[role="option"]:hover, li[role="option"][aria-selected="true"] {
+        background-color: var(--color-primary) !important;
+        color: #FFFFFF !important;
     }
 
     /* Streamlit Expander styling */
@@ -369,24 +429,61 @@ st.markdown(
     }
     div[data-testid="stExpander"] details summary {
         font-weight: 600 !important;
-        color: var(--color-neutral-text) !important;
+        color: var(--color-cream) !important;
+        background-color: var(--color-bg-surface) !important;
     }
     div[data-testid="stExpander"] details summary:hover {
-        color: var(--color-primary) !important;
+        color: var(--color-accent) !important;
+        background-color: var(--color-bg-elevated) !important;
     }
     div[data-testid="stExpander"] details summary svg,
     div[data-testid="stExpander"] details summary span:has(svg),
     div[data-testid="stExpander"] [data-testid="stExpanderToggleIcon"] {
         font-family: inherit !important;
+        color: var(--color-cream-soft) !important;
+    }
+    div[data-testid="stExpander"] [data-testid="stExpanderDetails"] {
+        background-color: var(--color-bg-surface) !important;
+        color: var(--color-cream-soft) !important;
+        border-top: 1px solid var(--color-border) !important;
+    }
+
+    /* Streamlit Alert Boxes (Info, Success, Warning, Error) */
+    div[data-testid="stAlert"] {
+        background-color: var(--color-bg-surface) !important;
+        color: var(--color-cream) !important;
+        border: 1px solid var(--color-border) !important;
+        border-radius: var(--radius-md) !important;
+    }
+    div[data-testid="stAlert"] p {
+        color: var(--color-cream) !important;
+    }
+
+    /* Streamlit Dataframe dark mode styling */
+    div[data-testid="stDataFrame"] {
+        border: 1px solid var(--color-border) !important;
+        border-radius: var(--radius-md) !important;
+        background-color: var(--color-bg-surface) !important;
     }
 
     /* Sidebar Clean Styling */
     section[data-testid="stSidebar"] {
-        background-color: var(--color-bg-surface);
-        border-right: 1px solid var(--color-border);
+        background-color: var(--color-bg-surface) !important;
+        border-right: 1px solid var(--color-border) !important;
     }
-    section[data-testid="stSidebar"] h3 {
-        color: var(--color-primary) !important;
+    section[data-testid="stSidebar"] h1,
+    section[data-testid="stSidebar"] h2,
+    section[data-testid="stSidebar"] h3,
+    section[data-testid="stSidebar"] h4 {
+        color: var(--color-cream) !important;
+    }
+    section[data-testid="stSidebar"] p,
+    section[data-testid="stSidebar"] span,
+    section[data-testid="stSidebar"] label {
+        color: var(--color-cream-soft) !important;
+    }
+    section[data-testid="stSidebar"] hr {
+        border-color: var(--color-border) !important;
     }
     </style>
     """,
@@ -614,7 +711,7 @@ with st.sidebar:
         default_index=0,
         styles={
             "container": {"padding": "4px 0", "background-color": "transparent"},
-            "icon": {"color": "#B32F4E", "font-size": "15px"},
+            "icon": {"color": "#F4F7CD", "font-size": "15px"},
             "nav-link": {
                 "font-family": '"Helvetica Now", "Helvetica Neue", Helvetica, Arial, sans-serif',
                 "font-size": "14px",
@@ -622,12 +719,12 @@ with st.sidebar:
                 "margin": "3px 0",
                 "padding": "8px 12px",
                 "border-radius": "8px",
-                "color": "#1F2421",
-                "--hover-color": "#FBECEF",
+                "color": "#E8E1C8",
+                "--hover-color": "#5E1A31",
             },
             "nav-link-selected": {
                 "background-color": "#B32F4E",
-                "color": "#ffffff",
+                "color": "#F4F1DE",
                 "font-weight": "600",
             },
         },
@@ -636,8 +733,8 @@ with st.sidebar:
     # Clickable Chapter Hyperlinks in Sidebar
     st.markdown(
         f"""
-        <div style="margin-top: 6px; padding: 10px 12px; background-color: #F8F9FA; border-radius: 8px; border: 1px solid #E4E7E5;">
-            <p style="font-size: 0.78rem; font-weight: 700; color: #59615B; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.04em;">Direct Chapter Links:</p>
+        <div style="margin-top: 6px; padding: 10px 12px; background-color: #3D1424; border-radius: 8px; border: 1px solid #5C2236;">
+            <p style="font-size: 0.78rem; font-weight: 700; color: #E8E1C8; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.04em;">Direct Chapter Links:</p>
             <div style="display: flex; flex-direction: column; gap: 4px; font-size: 0.85rem;">
                 <a href="#about-me" data-section="about-me" class="sidebar-chapter-link">📌 #about-me</a>
                 <a href="#autobiography" data-section="autobiography" class="sidebar-chapter-link">📌 #autobiography</a>
@@ -1332,9 +1429,9 @@ def main():
     st.markdown('<div class="section-divider"></div>', unsafe_allow_html=True)
     st.markdown(
         f"""
-        <div style="text-align: center; color: var(--color-neutral-light); font-size: 0.85rem; padding: 20px 0;">
-            <a href="#about-me" style="color: var(--color-primary); text-decoration: none; font-weight: 600;">⬆️ Back to Top</a><br><br>
-            <strong>{STUDENT_NAME}</strong> • {STUDENT_SECTION} • {STUDENT_SCHOOL}<br>
+        <div style="text-align: center; color: var(--color-cream-muted); font-size: 0.85rem; padding: 24px 0;">
+            <a href="#about-me" style="color: var(--color-accent); text-decoration: none; font-weight: 600;">⬆️ Back to Top</a><br><br>
+            <strong style="color: var(--color-cream);">{STUDENT_NAME}</strong> • {STUDENT_SECTION} • {STUDENT_SCHOOL}<br>
             Powered by Streamlit, streamlit-option-menu, Python & GitHub REST API
         </div>
         """,
