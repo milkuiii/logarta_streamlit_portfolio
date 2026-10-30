@@ -731,57 +731,57 @@ with st.sidebar:
     )
 
     # Clickable Chapter Hyperlinks in Sidebar
-    st.markdown(
-        f"""
-        <div style="margin-top: 6px; padding: 10px 12px; background-color: #3D1424; border-radius: 8px; border: 1px solid #5C2236;">
-            <p style="font-size: 0.78rem; font-weight: 700; color: #E8E1C8; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.04em;">Direct Chapter Links:</p>
-            <div style="display: flex; flex-direction: column; gap: 4px; font-size: 0.85rem;">
-                <a href="#about-me" data-section="about-me" class="sidebar-chapter-link">📌 #about-me</a>
-                <a href="#autobiography" data-section="autobiography" class="sidebar-chapter-link">📌 #autobiography</a>
-                <a href="#skills-proficiency" data-section="skills-proficiency" class="sidebar-chapter-link">📌 #skills-proficiency</a>
-                <a href="#featured-projects" data-section="featured-projects" class="sidebar-chapter-link">📌 #featured-projects</a>
-                <a href="#github-repositories" data-section="github-repositories" class="sidebar-chapter-link">📌 #github-repositories</a>
-                <a href="#contact-feedback" data-section="contact-feedback" class="sidebar-chapter-link">📌 #contact-feedback</a>
-            </div>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
+    # st.markdown(
+    #     f"""
+    #     <div style="margin-top: 6px; padding: 10px 12px; background-color: #3D1424; border-radius: 8px; border: 1px solid #5C2236;">
+    #         <p style="font-size: 0.78rem; font-weight: 700; color: #E8E1C8; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.04em;">Direct Chapter Links:</p>
+    #         <div style="display: flex; flex-direction: column; gap: 4px; font-size: 0.85rem;">
+    #             <a href="#about-me" data-section="about-me" class="sidebar-chapter-link">📌 #about-me</a>
+    #             <a href="#autobiography" data-section="autobiography" class="sidebar-chapter-link">📌 #autobiography</a>
+    #             <a href="#skills-proficiency" data-section="skills-proficiency" class="sidebar-chapter-link">📌 #skills-proficiency</a>
+    #             <a href="#featured-projects" data-section="featured-projects" class="sidebar-chapter-link">📌 #featured-projects</a>
+    #             <a href="#github-repositories" data-section="github-repositories" class="sidebar-chapter-link">📌 #github-repositories</a>
+    #             <a href="#contact-feedback" data-section="contact-feedback" class="sidebar-chapter-link">📌 #contact-feedback</a>
+    #         </div>
+    #     </div>
+    #     """,
+    #     unsafe_allow_html=True,
+    # )
 
-    st.markdown("---")
-    st.markdown("#### ⚙️ GitHub Integration Config")
+    # st.markdown("---")
+    # st.markdown("#### ⚙️ GitHub Integration Config")
     github_user_input = st.text_input(
         "GitHub Username:",
         value=DEFAULT_GITHUB_USERNAME,
         help="Update this username to dynamically load any public GitHub profile's repositories.",
     )
 
-    refresh_clicked = st.button("🔄 Refresh GitHub Data", use_container_width=True)
-    if refresh_clicked:
-        fetch_github_repositories.clear()
-        st.session_state.last_refresh_time = datetime.now().strftime("%I:%M %p")
-        st.toast("GitHub cache cleared and refreshed!", icon="✅")
+    # refresh_clicked = st.button("🔄 Refresh GitHub Data", use_container_width=True)
+    # if refresh_clicked:
+    #     fetch_github_repositories.clear()
+    #     st.session_state.last_refresh_time = datetime.now().strftime("%I:%M %p")
+    #     st.toast("GitHub cache cleared and refreshed!", icon="✅")
 
-    st.caption(f"Last updated cache: {st.session_state.last_refresh_time}")
+    # st.caption(f"Last updated cache: {st.session_state.last_refresh_time}")
+
+    # st.markdown("---")
+    # st.markdown("#### 📄 Résumé Summary")
+    # resume_path = os.path.join(os.path.dirname(__file__), "assets", "resume_summary.txt")
+    # if os.path.exists(resume_path):
+    #     with open(resume_path, "r", encoding="utf-8") as f:
+    #         resume_bytes = f.read()
+    #     st.download_button(
+    #         label="📥 Download Résumé (TXT)",
+    #         data=resume_bytes,
+    #         file_name=f"{STUDENT_NAME.replace(' ', '_')}_Resume.txt",
+    #         mime="text/plain",
+    #         use_container_width=True,
+    #     )
 
     st.markdown("---")
-    st.markdown("#### 📄 Résumé Summary")
-    resume_path = os.path.join(os.path.dirname(__file__), "assets", "resume_summary.txt")
-    if os.path.exists(resume_path):
-        with open(resume_path, "r", encoding="utf-8") as f:
-            resume_bytes = f.read()
-        st.download_button(
-            label="📥 Download Résumé (TXT)",
-            data=resume_bytes,
-            file_name=f"{STUDENT_NAME.replace(' ', '_')}_Resume.txt",
-            mime="text/plain",
-            use_container_width=True,
-        )
-
-    st.markdown("---")
-    show_fun_facts = st.checkbox("Show quick fun facts in sidebar", value=True)
-    if show_fun_facts:
-        st.info("💡 **Fun Fact:** Alumna of Philippine Science High School (PSHS-CVisC) and enthusiastic about web technologies!")
+    # show_fun_facts = st.checkbox("Show quick fun facts in sidebar", value=True)
+    # if show_fun_facts:
+    st.markdown("💡 **Fun Fact:** Alumna of Philippine Science High School (PSHS-CVisC) and enthusiastic about web technologies!")
 
 
 # Auto-scroll helper and ScrollSpy synchronizer
@@ -1207,10 +1207,10 @@ def render_github_section(username: str):
     st.markdown('<div id="github-repositories" class="section-anchor"></div>', unsafe_allow_html=True)
 
     st.header("🐙 Dynamic GitHub Repositories")
-    st.write(
-        f"Live repository feed retrieved dynamically from GitHub for account: **[@{username}](https://github.com/{username})**. "
-        "This data updates automatically via GitHub's REST API and utilizes Streamlit caching (`st.cache_data`) for efficiency."
-    )
+    # st.write(
+    #     f"Live repository feed retrieved dynamically from GitHub for account: **[@{username}](https://github.com/{username})**. "
+    #     "This data updates automatically via GitHub's REST API and utilizes Streamlit caching (`st.cache_data`) for efficiency."
+    # )
 
     with st.spinner(f"Fetching latest repositories for '{username}'..."):
         api_result = fetch_github_repositories(username)
